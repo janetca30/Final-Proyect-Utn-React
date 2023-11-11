@@ -1,0 +1,12 @@
+*{
+  background-color: #1b1b3d;
+
+}
+
+@media (min-width: 1080px) {
+  .container {
+    width: 95vw;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+}

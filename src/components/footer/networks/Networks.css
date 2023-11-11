@@ -1,0 +1,10 @@
+
+.network {
+  list-style: none;
+  display: flex;
+}
+
+.network-item img {
+  background-color: rgba(240, 248, 255, 0);
+  width: 45%;
+}

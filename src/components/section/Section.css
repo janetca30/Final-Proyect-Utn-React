@@ -1,0 +1,30 @@
+
+.image-bar img {
+  width: 100%;
+  position: relative;
+}
+
+.search {
+  color: aliceblue;
+  background: #c52588;
+  width: 80px;
+  border: 2px solid white;
+  border-radius: 12%;
+  position: absolute;
+  margin-left:-80%;
+  margin-top: 4%;
+  z-index: 1;
+  padding: 4px;
+  font-size: 1.2rem;
+}
+
+.presentation {
+  color: aliceblue;
+  width: 25%;
+  margin-left:10%;
+  margin-top: -60%;
+  position: absolute;
+  z-index: 1;
+  background-color: #c5258800;
+  font-size: 1.5rem;
+}
