@@ -7,18 +7,10 @@ section {
   position: relative;
 }
 
-.search {
-  color: aliceblue;
-  background: #c52588;
-  width: 80px;
-  border: 2px solid white;
-  border-radius: 12%;
+.bond {
+  z-index: 2;
   position: absolute;
-  margin-left:-80%;
-  margin-top: 4%;
-  z-index: 1;
-  padding: 4px;
-  font-size: 1.2rem;
+  
 }
 
 .presentation {
