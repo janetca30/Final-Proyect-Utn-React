@@ -1,0 +1,8 @@
+.title-recipe h2 {
+  font-size: 2rem;
+  color: #3d4eaf;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+

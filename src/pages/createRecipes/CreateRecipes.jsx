@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import RecipeList from '../../components/RecipeList';
-import RecipeForm from '../../components/recipeForm/RecipeForm';
+import RecipeList from './recipeList/RecipeList';
+import RecipeForm from './recipeForm/RecipeForm';
 import Cocktail from './../recipes/cocktail/Cocktail';
+import './CreateRecipes.css'
 
 const CreateRecipes = () => {
     
@@ -10,11 +11,10 @@ const CreateRecipes = () => {
     
     useEffect(() => {
         try {
-            const savedRecipes = JSON.parse(localStorage.getItem('recipes'));
+            const savedRecipes = JSON.parse(localStorage.getItem('recipes')) || [];
             console.log ('Recipes Uploaded:', savedRecipes)
-            if (savedRecipes) {
-                setRecipes(savedRecipes);
-            }
+            setRecipes(savedRecipes);
+            
         } catch (error) {
             console.error("No recipe found in local storage", error);
         }
@@ -50,7 +50,7 @@ const CreateRecipes = () => {
 
     return (
         <div>
-            <div>
+            <div className='title-recipe'>
                 <h2>Create your Recipe</h2>
             </div>        
 

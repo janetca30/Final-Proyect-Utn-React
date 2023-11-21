@@ -1,0 +1,8 @@
+.text-recipe-list h2{
+  font-size: 1.5rem;
+  color: #af3d72;
+  font-weight: 700;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

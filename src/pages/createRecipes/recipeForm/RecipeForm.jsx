@@ -12,12 +12,28 @@ const RecipeForm = ({ addRecipe }) => {
   const [ newIngredient, setNewIngredient] = useState('');
   const [ newInstruction, setNewInstruction] = useState('');
 
+  const handleEnterKey = (e) => {
+    if (e.key === 'Enter'){
+      e.preventDefault();
+
+      const formInputs = document.querySelectorAll('.cocktail input, .cocktail textarea');
+      const currentInput = e.target;
+      const currentIndex = Array.from(formInputs).indexOf(currentInput);
+
+      if (currentIndex < formInputs.length -1) {
+        const nextInput = formInputs[currentIndex +1];
+        nextInput.focus();
+      }
+    }
+  };
+
   const handlerSubmit = (e) => {
     e.preventDefault();
-    if(name.trim() !== '' && 
+    if(
+      name.trim() !== '' && 
       description.trim() !== '' &&
-      ingredients.trim() !== '' &&
-      instructions.trim() !== '' &&
+      ingredients.length > 0 &&
+      instructions.length > 0 &&
       imageUrl.trim() !== ''
     ){
       //Crea un nuevo objeto de receta
@@ -27,18 +43,18 @@ const RecipeForm = ({ addRecipe }) => {
         description,
         ingredients,
         instructions,
-        imageUrl
+        imageUrl,
       };
       
       //llama a la funcion y agrega la receta
-        addRecipe(newRecipe);
+      addRecipe(newRecipe);
 
       //limpia el form 
       setName('');
       setDescription('');
-      setIngredients('');
-      setInstructions('');
-      setImageUrl('')
+      setIngredients([]);
+      setInstructions([]);
+      setImageUrl('');
     }
   };
 
@@ -70,18 +86,22 @@ const RecipeForm = ({ addRecipe }) => {
     <form className="cocktail" onSubmit={handlerSubmit}>
       <div className="name">
         <label className="name">
-          <input className="input-name"
+          <input 
+            className="input-name"
             type="text" 
             value={name}
             onChange={(e) => setName (e.target.value)}
+            onKeyDown={handleEnterKey}
             placeholder="Recipe Name"
           />
         </label>
         <label className="name">
-          <input className="input-description"
+          <textarea 
+            className="input-description"
             type="text"
             value={description}
             onChange={(e)=>setDescription(e.target.value)}
+            onKeyDown={handleEnterKey}
             placeholder="Recipe Description"
           />
         </label>
@@ -93,57 +113,62 @@ const RecipeForm = ({ addRecipe }) => {
             {ingredients.map((ingredient, index) => (
               <li key={index}>
                 {ingredient}
-                <button type="button" onClick={() => handleRemoveIngredient(index)}>
-                  Remove
+                <button className="minus" type="button" onClick={() => handleRemoveIngredient(index)}>
+                  -
                 </button>
               </li>
             ))}
           </ul>
-          <input
+          <input className="input-ingredients"
             type="text"
             value={newIngredient}
             onChange={(e)=>setNewIngredient(e.target.value)}
             placeholder="New Ingredient"
           />
-          <button type="button" onClick={handleAddIngredient}>
-              Add
+          <button className="more" type="button" onClick={handleAddIngredient}>
+            +
           </button>
         </label>
-        <label>
-          <input
+        <label className="image">
+          <input  className="input-image"
             type="url"
             value={imageUrl}
             onChange={(e)=>setImageUrl(e.target.value)}
             placeholder="https://example.com/img.jpg"
           />
+          {imageUrl && <img src={imageUrl} alt="image-recipe" className="image-recipe" />}
         </label>
       </div>
-      <label>
-        Instructions:
-        <ul>
-          {instructions.map((step, index) => (
-            <li key={index}>
-              {step}
-              <button type="button" onClick={()=>handleRemoveInstruction(index)}>
-                Remove
-              </button>
-            </li>
-          ))}
-        </ul>
-        <input
-          type="text"
-          value={newInstruction}
-          onChange={(e)=>setInstructions(e.target.value)}
-          placeholder="New Step"
-        />
-        <button type="button" onClick={handleAddInstruction}>
-          Add
+      <div className="instructions">
+        <label className="instructions">
+          Instructions:
+          <ul>
+            {instructions.map((instruction, index) => (
+              <li key={index}>
+                {instruction}
+                <button className="minus" type="button" onClick={()=>handleRemoveInstruction(index)}>
+                  -
+                </button>
+              </li>
+            ))}
+          </ul>
+          <input className="input-instructions"
+            type="text"
+            value={newInstruction}
+            onChange={(e)=>setNewInstruction(e.target.value)}
+            placeholder="New Instruction"
+          />
+          <button className="more" type="button" onClick={handleAddInstruction}>
+            +
+          </button>
+        </label>
+      </div>
+      <div className="submit">
+        <button 
+          type="submit"
+          >Add Recipe
         </button>
-      </label>
-      <button 
-        type="submit"
-        >Add Recipe
-      </button>
+      </div>
     </form>
   );
 };

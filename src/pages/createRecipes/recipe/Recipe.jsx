@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import './Recipe.css'
 
 const Recipe = ({ recipe, completeRecipe, deleteRecipe }) => {
   const { id, name, completed } = recipe
@@ -16,10 +17,10 @@ const Recipe = ({ recipe, completeRecipe, deleteRecipe }) => {
       <span className={completed ? 'completed' : ''} >
         {name}
       </span>
-      <button onClick={added}>
+      <button className='added' onClick={added}>
         {completed ? 'Slope' : 'Added'}
       </button>
-      <button onClick={remove}>Delete
+      <button className='delete' onClick={remove}>Delete
       </button>
     </div>
   )
