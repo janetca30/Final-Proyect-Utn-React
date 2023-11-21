@@ -1,5 +1,5 @@
 
-const cocktailRecipes = [
+const cocktailsRecipes = [
     {
       "name": "Margarita",
       "description":"The Margarita is considered a cocktail classic, and is one of the most popular cocktails in the world. Its unique combination of tequila, lime and salt makes it a refreshing and delicious cocktail that can be enjoyed on any occasion.",
@@ -39,5 +39,5 @@ const cocktailRecipes = [
     },
   ]
 
-  export default cocktailRecipes 
+  export default cocktailsRecipes 
 

@@ -1,0 +1,70 @@
+.cocktail {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+  padding: 1%;
+  margin: 8%;
+  margin-top: 2%;
+  background: rgba(184, 62, 82, 0.63);
+}
+
+.name {
+  width: 90%;
+  background: rgba(184, 62, 82, 0);
+}
+
+
+.name h2 {
+  font-size: 1.8rem;
+  color: #c1c4d8;
+  text-align: center;
+  background: rgba(184, 62, 82, 0);
+}
+
+.name p {
+  background: rgba(184, 62, 82, 0);
+}
+
+.half {
+  display: flex;
+  flex-direction: row;
+  background: rgba(184, 62, 82, 0);
+  justify-content: center;
+  align-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 90%;
+}
+
+.ingredients {
+  width: 60%;
+  background: rgba(184, 62, 82, 0);
+}
+
+.ingredients p, strong, ul, li {
+  background: rgba(184, 62, 82, 0);
+}
+
+.image {
+  width: 40%;
+  height: auto;
+  background: rgba(184, 62, 82, 0);
+}
+
+.image img {
+  width: 350px;
+  height: 250px;
+}
+
+.instructions {
+  width: 90%;
+  background: rgba(184, 62, 82, 0);
+}
+
+.instructions p, strong, ul, li {
+  background: rgba(184, 62, 82, 0);
+}

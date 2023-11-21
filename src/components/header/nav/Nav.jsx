@@ -5,7 +5,7 @@ function Nav () {
   let navbarData = [
     { name: 'Home', to: '/' },
     { name: 'Recipes', to: '/recipes' },
-    { name: 'Contact', to: '/contact' },
+    { name: 'Create your recipe', to: '/createRecipes' },
 
   ]
   return (
