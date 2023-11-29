@@ -2,28 +2,66 @@ import PropTypes from 'prop-types'
 import './Recipe.css'
 
 const Recipe = ({ recipe, completeRecipe, deleteRecipe }) => {
-  const { id, name, completed } = recipe
+  const { id, name, completed, description, ingredients, instructions, imageUrl } = recipe
 
-  const added = () => {
+  const handleComplete = () => {
     completeRecipe(id)
   }
 
-  const remove = () => {
+  const handledelete = () => {
     deleteRecipe(id)
   }
 
   return (
-    <div className="recipe">
-      <span className={completed ? 'completed' : ''} >
-        {name}
-      </span>
-      <button className='added' onClick={added}>
-        {completed ? 'Slope' : 'Added'}
-      </button>
-      <button className='delete' onClick={remove}>Delete
-      </button>
+    <div className="createRecipe">
+      <div className='recipe'>
+        <div className="createName">
+          <span className={completed ? 'completed' : ''} >
+            {name}
+          </span>
+        </div>
+        <div className='recipeCard'>
+          {completed && (
+            <>
+              <div className='cardDescription'>
+                <p>{description}</p>
+              </div>
+              <div className='cardHalf'>
+                <div className='cardIngredients'>
+                  <p>Ingredients:</p>
+                  <ul>
+                    {ingredients.map((ingredient, index) => (
+                      <li key={index}>{ingredient}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className='cardImage'>
+                  <img className='image-card' src={imageUrl} alt="Recipe Preview" />
+                </div>
+              </div>
+              <div className='instructions'>
+                <p>Instructions:</p>
+                <ul>
+                    {instructions.map((instruction, index) => (
+                      <li key={index}>{instruction}</li>
+                    ))}
+                </ul>
+              </div>
+            </>
+          )}
+        </div>
+        <div className='complete-delete'>
+          <button className='complete' onClick={handleComplete}>
+            {completed ? 'Undo' : 'Complete'}
+          </button>
+          <button className='delete' onClick={handledelete}>
+            Delete
+          </button>
+        </div>
+      </div>
     </div>
-  )
+  );
+
 }
 
 Recipe.propTypes = {
@@ -31,6 +69,10 @@ Recipe.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
+    description: PropTypes.string,
+    ingredients: PropTypes.arrayOf(PropTypes.string),
+    instructions: PropTypes.arrayOf(PropTypes.string),
+    imageUrl: PropTypes.string,
   }).isRequired,
   completeRecipe: PropTypes.func.isRequired,
   deleteRecipe: PropTypes.func.isRequired,

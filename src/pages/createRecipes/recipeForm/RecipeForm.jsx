@@ -2,21 +2,21 @@ import { useState } from "react";
 import PropTypes from 'prop-types'
 import './RecipeForm.css'
 
-const RecipeForm = ({ addRecipe }) => {
-  
-  const [ name, setName] = useState('');
-  const [ description, setDescription] = useState('');
-  const [ ingredients, setIngredients] = useState([]);
-  const [ instructions, setInstructions] = useState([]);
-  const [ imageUrl, setImageUrl] = useState('');
-  const [ newIngredient, setNewIngredient] = useState('');
-  const [ newInstruction, setNewInstruction] = useState('');
+const RecipeForm = ({ addRecipe, initialRecipe }) => {
+
+  const [name, setName] = useState(initialRecipe ? initialRecipe.name : '');
+  const [description, setDescription] = useState(initialRecipe ? initialRecipe.description : '');
+  const [ingredients, setIngredients] = useState(initialRecipe ? [...initialRecipe.ingredients] : []);
+  const [instructions, setInstructions] = useState(initialRecipe ? [...initialRecipe.instructions] : []);
+  const [imageUrl, setImageUrl] = useState(initialRecipe ? initialRecipe.imageUrl : '');
+  const [newIngredient, setNewIngredient] = useState('');
+  const [newInstruction, setNewInstruction] = useState('')
 
   const handleEnterKey = (e) => {
     if (e.key === 'Enter'){
       e.preventDefault();
 
-      const formInputs = document.querySelectorAll('.cocktail input, .cocktail textarea');
+      const formInputs = document.querySelectorAll('.recipe-form input, .recipe-form textarea');
       const currentInput = e.target;
       const currentIndex = Array.from(formInputs).indexOf(currentInput);
 
@@ -27,12 +27,13 @@ const RecipeForm = ({ addRecipe }) => {
     }
   };
 
-  const handlerSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+
     if(
       name.trim() !== '' && 
       description.trim() !== '' &&
-      ingredients.length > 0 &&
+      ingredients.length > 0  &&
       instructions.length > 0 &&
       imageUrl.trim() !== ''
     ){
@@ -43,18 +44,19 @@ const RecipeForm = ({ addRecipe }) => {
         description,
         ingredients,
         instructions,
-        imageUrl,
+        imageUrl
       };
-      
+
       //llama a la funcion y agrega la receta
       addRecipe(newRecipe);
 
       //limpia el form 
-      setName('');
-      setDescription('');
-      setIngredients([]);
-      setInstructions([]);
-      setImageUrl('');
+
+    setName('');
+    setDescription('');
+    setIngredients([]);
+    setInstructions([]);
+    setImageUrl('');
     }
   };
 
@@ -82,27 +84,31 @@ const RecipeForm = ({ addRecipe }) => {
     setInstructions(updatedInstructions)
     }
 
+    const handleImageChange = (e) => {
+      setImageUrl(e.target.value);
+    };
+
   return (
-    <form className="cocktail" onSubmit={handlerSubmit}>
-      <div className="name">
+    <form className="recipe-form" onSubmit={handleSubmit} >
+      <div className="title-descrip">
         <label className="name">
           <input 
             className="input-name"
-            type="text" 
+            type="text"
             value={name}
-            onChange={(e) => setName (e.target.value)}
+            placeholder="Recipe name"
+            onChange={(e) => setName(e.target.value)}
             onKeyDown={handleEnterKey}
-            placeholder="Recipe Name"
           />
         </label>
-        <label className="name">
+        <label className="description">
           <textarea 
             className="input-description"
             type="text"
             value={description}
-            onChange={(e)=>setDescription(e.target.value)}
+            placeholder="Description"
+            onChange={(e) => setDescription(e.target.value)}
             onKeyDown={handleEnterKey}
-            placeholder="Recipe Description"
           />
         </label>
       </div>
@@ -111,32 +117,47 @@ const RecipeForm = ({ addRecipe }) => {
           Ingredients:
           <ul>
             {ingredients.map((ingredient, index) => (
-              <li key={index}>
+              <li 
+                key={index}>
                 {ingredient}
-                <button className="minus" type="button" onClick={() => handleRemoveIngredient(index)}>
-                  -
+                <button 
+                  className="minus" 
+                  type="button" 
+                  onClick={() => handleRemoveIngredient(index)}
+                >
+                  X
                 </button>
               </li>
             ))}
           </ul>
-          <input className="input-ingredients"
+          <input
+            className="input-ingredients"
             type="text"
             value={newIngredient}
-            onChange={(e)=>setNewIngredient(e.target.value)}
+            onChange={(e) => setNewIngredient(e.target.value)}
+            onKeyDown={handleEnterKey}
             placeholder="New Ingredient"
           />
-          <button className="more" type="button" onClick={handleAddIngredient}>
+          <button
+            className="plus"
+            type="button"
+            onClick={handleAddIngredient}
+          >
             +
           </button>
         </label>
         <label className="image">
-          <input  className="input-image"
-            type="url"
-            value={imageUrl}
-            onChange={(e)=>setImageUrl(e.target.value)}
-            placeholder="https://example.com/img.jpg"
-          />
-          {imageUrl && <img src={imageUrl} alt="image-recipe" className="image-recipe" />}
+          {imageUrl ? (
+            <img className="preview-image" src={imageUrl} alt="Preview" />
+          ) : (
+            <input 
+              className="input-image"
+              type="url"
+              value={imageUrl}
+              placeholder="https://example.com/img.jpg"
+              onChange={handleImageChange}
+            />
+          )}
         </label>
       </div>
       <div className="instructions">
@@ -144,29 +165,39 @@ const RecipeForm = ({ addRecipe }) => {
           Instructions:
           <ul>
             {instructions.map((instruction, index) => (
-              <li key={index}>
+              <li 
+                key={index}>
                 {instruction}
-                <button className="minus" type="button" onClick={()=>handleRemoveInstruction(index)}>
-                  -
+                <button 
+                  className="minus" 
+                  type="button" 
+                  onClick={() => handleRemoveInstruction(index)}
+                >
+                  X
                 </button>
               </li>
             ))}
           </ul>
-          <input className="input-instructions"
+          <input
+            className="input-instructions"
             type="text"
             value={newInstruction}
-            onChange={(e)=>setNewInstruction(e.target.value)}
+            onChange={(e) => setNewInstruction(e.target.value)}
+            onKeyDown={handleEnterKey}
             placeholder="New Instruction"
           />
-          <button className="more" type="button" onClick={handleAddInstruction}>
+          <button
+            className="plus"
+            type="button"
+            onClick={handleAddInstruction}
+          >
             +
           </button>
         </label>
       </div>
       <div className="submit">
-        <button 
-          type="submit"
-          >Add Recipe
+        <button className="new-recipe" type="submit" >
+          Add Recipe
         </button>
       </div>
     </form>
@@ -175,6 +206,7 @@ const RecipeForm = ({ addRecipe }) => {
 
 RecipeForm.propTypes = {
   addRecipe: PropTypes.func.isRequired,
+  initialRecipe: PropTypes.object,
 };
 
-export default RecipeForm
+export default RecipeForm;

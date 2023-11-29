@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import Recipe from '../recipe/Recipe'
+
 import './RecipeList.css'
 
 const RecipeList = ({ recipes, completeRecipe, deleteRecipe }) => {
@@ -14,6 +15,7 @@ const RecipeList = ({ recipes, completeRecipe, deleteRecipe }) => {
         deleteRecipe={deleteRecipe} 
       />
       ))}
+      
     </div>
   )
 }

@@ -1,36 +1,110 @@
-.recipe {
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  align-content: center;
-}
-
-.recipe span {
-  font-size: 1.2rem;
-  color: #3737c2;
-}
-
-.added {
-  background-color: #3737c2;
+.complete {
+  background-color: black;
   color: whitesmoke;
-  padding: 0.5rem;
+  padding: 0.8rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 15%;
   cursor: pointer;
+  margin: 2%;
 }
 
-.added:hover {
+.complete:hover {
   background-color: #2c8c8f;
 }
 
 .delete {
-  background-color: #c23771;
+  background-color: black;
   color: whitesmoke;
-  padding: 0.5rem;
+  padding: 0.8rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 15%;
   cursor: pointer;
+  margin: 2%
 }
+
+.recipe {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 3%;
+  padding: 1%;
+}
+
+.createName span {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.recipeCard {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  text-align: left;
+}
+
+.cardHalf {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+}
+
+.cardIngredients {
+  width: 60%;
+  font-size: 1rem;
+}
+
+.cardImage {
+  width: 40%;
+}
+
+.image-card {
+  width: 280px;
+  height: 220px;
+  
+}
+
+.createRecipe {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+
+}
+
+
+
+.recipe span {
+  font-size: 1.5rem;
+  color: white;
+  width: 60%;
+  margin: 1%;
+  
+
+}
+
+.complete-delete {
+  display: flex;
+  flex-direction: row;
+  
+  
+}
+
+
+
+
+
+

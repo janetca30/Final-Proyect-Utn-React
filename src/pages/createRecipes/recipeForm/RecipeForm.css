@@ -1,16 +1,36 @@
+.recipe-form {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+  padding: 1%;
+  margin: 8%;
+  margin-top: 2%;
+  background: rgba(25, 140, 148, 0.63);
+}
+
+.title-descrip {
+  width: 90%;
+  background: rgba(25, 140, 148, 0);
+}
+
 .input-name {
   width: 90%;
-  background: rgba(184, 62, 82, 0);
+  background: rgba(25, 140, 148, 0);
   font-size: 1.8rem;
   color: #c1c4d8;
   text-align: center;
   border: none;
+  padding: 1%;
 }
 
 .input-description {
   resize: vertical;
   height: 120px;
-  background: rgba(184, 62, 82, 0);
+  background: rgba(25, 140, 148, 0);
   font-size: 1.2rem;
   color: #c1c4d8;
   padding: 1%;
@@ -18,20 +38,24 @@
   width: 100%;
 }
 
+label {
+  background: rgba(25, 140, 148, 0);
+} 
+
 .input-ingredients {
-  background: rgba(184, 62, 82, 0);
+  background: rgba(25, 140, 148, 0);
   font-size: 1.2rem;
   color: #c1c4d8;
   border: none;
   width: 60%;
 }
 
-.more {
+.plus {
   background: aliceblue;
   border-radius: 50% ;
   font-weight: 800;
-  border-color: rgba(184, 62, 82, 0.63);
-  color: rgba(184, 62, 82, 0.63); 
+  border-color: black;
+  color: black; 
 }
 
 .minus {
@@ -52,16 +76,10 @@
 .input-image {
   background: rgba(184, 62, 82, 0);
   font-size: 1rem;
-  color: rgba(184, 62, 82, 0.63); 
+  color: rgba(184, 62, 82, 0);
   border: none;
   width: 100%;
-  transition: color 2s, background 2s; 
 
-  
-  &:focus {
-    color: #c1c4d8; 
-    background: rgba(184, 62, 82, 0.63); 
-  }
 }
 
 
@@ -70,6 +88,7 @@
   background: rgba(184, 62, 82, 0);
   border: none;
   font-size: 1.2rem;
+  color: #c1c4d8;
 }
 
 .submit {
@@ -84,7 +103,7 @@
   
 }
 
-.submit button {
+.new-recipe {
   background-color: aliceblue;
   padding: 10px 20px;
   font-size: 1.2rem;
