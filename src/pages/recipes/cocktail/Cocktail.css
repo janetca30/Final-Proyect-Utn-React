@@ -1,5 +1,5 @@
 .cocktail {
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -67,4 +67,102 @@
 
 .instructions p, strong, ul, li {
   background: rgba(184, 62, 82, 0);
+}
+
+@media only screen and (min-width: 240px) and (max-width: 319px) {
+  .cocktail {
+    width: 70vh;
+    display: flex;
+    align-items: center;
+    margin-right: -25%;
+    padding: 0;
+  }
+
+  .half {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ingredients {
+    width: 90%;
+  }
+
+  .image {
+    width: 90%;
+  }
+
+  .image img {
+    width: 200px;
+    height: 170px;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 413px) {
+  .cocktail {
+    width: 45vh;
+    display: flex;
+    align-items: center;
+    margin-left: 65%;
+    padding: 0;
+  }
+
+  .half {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 5%;
+  }
+
+  .ingredients {
+    width: 90%;
+  }
+
+  .image {
+    width: 100%;
+  }
+
+  .image img {
+    width: 232px;
+    height: 170px;
+  }
+}
+
+@media only screen and (min-width: 414px) and (max-width: 687px) {
+  .cocktail {
+    width: 45vh;
+  }
+
+  .half {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ingredients {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 688px) and (max-width: 1023px) {
+  .half {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ingredients{
+    width: 90%;
+  }
+
+  .image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image img {
+    width: 400px;
+    height: 280px;
+  }
 }
